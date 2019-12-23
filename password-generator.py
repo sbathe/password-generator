@@ -39,12 +39,14 @@ class generate_password:
               words[w] = words[w].replace(k,self.transcodes[k],1)
               break
         return words
+        
     def generate(self):
         words = self.getwordarray()
         #print(words)
         self.capitalize_one(words)
         self.numberize_one(words)
         return self.connector.join(words)
+
     def getmany(self, num_passwords=5):
         passwords = list()
         for c in range(num_passwords):
