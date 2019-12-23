@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import random
+from pathlib import Path
 class generate_password:
     def __init__(self, num_words=2):
         self.connector = '-'
@@ -13,7 +14,7 @@ class generate_password:
                's': '5',
                't': '7'
             }
-        self.wordlist = open('large_word_list.txt').readlines()
+        self.wordlist = open(str(Path.home())+'/bin/large_word_list.txt').readlines()
         self.num_words = num_words
 
     def getword(self):
@@ -25,12 +26,12 @@ class generate_password:
         for w in range(0,self.num_words):
             words.append(self.getword())
         return words
-    
+
     def capitalize_one(self, words=[]):
         w = random.randint(0,len(words)-1)
         words[w] = words[w].capitalize()
         return words
-    
+
     def numberize_one(self, words=[]):
         w = random.randint(0,len(words)-1)
         for k in self.transcodes.keys():
