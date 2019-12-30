@@ -2,7 +2,7 @@
 import random
 from pathlib import Path
 class generate_password:
-    def __init__(self, num_words=2):
+    def __init__(self, num_words=4):
         self.connector = '-'
         self.transcodes = {
                'e': '3',
@@ -39,7 +39,7 @@ class generate_password:
               words[w] = words[w].replace(k,self.transcodes[k],1)
               break
         return words
-        
+
     def generate(self):
         words = self.getwordarray()
         #print(words)
@@ -54,6 +54,6 @@ class generate_password:
         return passwords
 
 if __name__ == "__main__":
-    gp = generate_password(2)
+    gp = generate_password()
     for p in gp.getmany():
         print(p)
