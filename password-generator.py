@@ -34,17 +34,21 @@ class generate_password:
 
     def numberize_one(self, words=[]):
         w = random.randint(0,len(words)-1)
+        numberized = 0
         for k in self.transcodes.keys():
           if k in words[w]:
               words[w] = words[w].replace(k,self.transcodes[k],1)
+              numberized = 1
               break
-        return words
+        return (numberized, words)
 
     def generate(self):
         words = self.getwordarray()
         #print(words)
         self.capitalize_one(words)
-        self.numberize_one(words)
+        numbered = 0
+        while not numbered:
+            numbered, words = self.numberize_one(words)
         return self.connector.join(words)
 
     def getmany(self, num_passwords=5):
